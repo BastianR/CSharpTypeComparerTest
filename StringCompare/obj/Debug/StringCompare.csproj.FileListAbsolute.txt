@@ -1,0 +1,7 @@
+E:\Development\[C#] String-Comparer\StringCompare\bin\Debug\StringCompare.exe.config
+E:\Development\[C#] String-Comparer\StringCompare\bin\Debug\StringCompare.exe
+E:\Development\[C#] String-Comparer\StringCompare\bin\Debug\StringCompare.pdb
+E:\Development\[C#] String-Comparer\StringCompare\obj\Debug\StringCompare.csprojAssemblyReference.cache
+E:\Development\[C#] String-Comparer\StringCompare\obj\Debug\StringCompare.csproj.CoreCompileInputs.cache
+E:\Development\[C#] String-Comparer\StringCompare\obj\Debug\StringCompare.exe
+E:\Development\[C#] String-Comparer\StringCompare\obj\Debug\StringCompare.pdb
