@@ -15,7 +15,6 @@ namespace StringCompare.Models
         private List<TestModel> _testModelList;
         private Dictionary<int, TestModel> _testModelDictionary;
         private ObservableCollection<TestModel> _testModelObservableCollection;
-        private Dictionary<string, TestResult> _allTestResults;
 
         #endregion
 
@@ -31,8 +30,16 @@ namespace StringCompare.Models
             _testModelList = new List<TestModel>();
             _testModelDictionary = new Dictionary<int, TestModel>();
             _testModelObservableCollection = new ObservableCollection<TestModel>();
-            _allTestResults = new Dictionary<string, TestResult>();
+            AllTestResults = new Dictionary<string, TestResult>();
         }
+
+        #endregion
+
+
+
+        #region Properties
+
+        public Dictionary<string, TestResult> AllTestResults { get; }
 
         #endregion
 
@@ -50,86 +57,86 @@ namespace StringCompare.Models
 
         public void TestSingleThreaded()
         {
-            Console.WriteLine("Start TestSingleThreaded ArrayComparer");
+            Console.Write("Start TestSingleThreaded ArrayComparer");
             ArrayComparer arrayComparer = new ArrayComparer(_testModelArray);
-            _allTestResults.Add("SingleThreaded_Array", arrayComparer.TestResult);
+            AllTestResults.Add("SingleThreaded_Array", arrayComparer.TestResult);
 
-            Console.WriteLine("Start TestSingleThreaded ListComparer");
+            Console.Write("Start TestSingleThreaded ListComparer");
             ListComparer listComparer = new ListComparer(_testModelList);
-            _allTestResults.Add("SingleThreaded_List", listComparer.TestResult);
+            AllTestResults.Add("SingleThreaded_List", listComparer.TestResult);
 
-            Console.WriteLine("Start TestSingleThreaded DictionaryComparer");
+            Console.Write("Start TestSingleThreaded DictionaryComparer");
             DictionaryComparer dictionaryComparer = new DictionaryComparer(_testModelDictionary);
-            _allTestResults.Add("SingleThreaded_Dictionary", dictionaryComparer.TestResult);
+            AllTestResults.Add("SingleThreaded_Dictionary", dictionaryComparer.TestResult);
 
-            Console.WriteLine("Start TestSingleThreaded ObservableCollectionComparer");
+            Console.Write("Start TestSingleThreaded ObservableCollectionComparer");
             ObservableCollectionComparer observableCollectionComparer = new ObservableCollectionComparer(_testModelObservableCollection);
-            _allTestResults.Add("SingleThreaded_ObservableCollection", observableCollectionComparer.TestResult);
+            AllTestResults.Add("SingleThreaded_ObservableCollection", observableCollectionComparer.TestResult);
         }
 
         public void TestSingleExtraThreaded()
         {
-            Console.WriteLine("Start TestSingleExtraThreaded ArrayComparer");
+            Console.Write("Start TestSingleExtraThreaded ArrayComparer");
             Task<TestResult> taskArray = Task<TestResult>.Factory.StartNew(() =>
             {
                 ArrayComparer arrayComparer = new ArrayComparer(_testModelArray);
                 return arrayComparer.TestResult;
             });
             taskArray.Wait();
-            _allTestResults.Add("TestSingleExtraThreaded_Array", taskArray.Result);
+            AllTestResults.Add("TestSingleExtraThreaded_Array", taskArray.Result);
 
-            Console.WriteLine("Start TestSingleExtraThreaded ListComparer");
+            Console.Write("Start TestSingleExtraThreaded ListComparer");
             Task<TestResult> taskList = Task<TestResult>.Factory.StartNew(() =>
             {
                 ListComparer listComparer = new ListComparer(_testModelList);
                 return listComparer.TestResult;
             });
             taskList.Wait();
-            _allTestResults.Add("TestSingleExtraThreaded_List", taskList.Result);
+            AllTestResults.Add("TestSingleExtraThreaded_List", taskList.Result);
 
-            Console.WriteLine("Start TestSingleExtraThreaded DictionaryComparer");
+            Console.Write("Start TestSingleExtraThreaded DictionaryComparer");
             Task<TestResult> taskDictionary = Task<TestResult>.Factory.StartNew(() =>
             {
                 DictionaryComparer dictionaryComparer = new DictionaryComparer(_testModelDictionary);
                 return dictionaryComparer.TestResult;
             });
             taskDictionary.Wait();
-            _allTestResults.Add("TestSingleExtraThreaded_Dictionary", taskDictionary.Result);
+            AllTestResults.Add("TestSingleExtraThreaded_Dictionary", taskDictionary.Result);
 
-            Console.WriteLine("Start TestSingleExtraThreaded ObservableCollectionComparer");
+            Console.Write("Start TestSingleExtraThreaded ObservableCollectionComparer");
             Task<TestResult> taskObservableCollection = Task<TestResult>.Factory.StartNew(() =>
             {
                 ObservableCollectionComparer observableCollectionComparer = new ObservableCollectionComparer(_testModelObservableCollection);
                 return observableCollectionComparer.TestResult;
             });
             taskObservableCollection.Wait();
-            _allTestResults.Add("TestSingleExtraThreaded_ObservableCollection", taskObservableCollection.Result);
+            AllTestResults.Add("TestSingleExtraThreaded_ObservableCollection", taskObservableCollection.Result);
         }
 
         public void TestMultiThreaded()
         {
-            Console.WriteLine("Start TestSingleExtraThreaded ArrayComparer");
+            Console.WriteLine("Start TestMultiThreaded ArrayComparer");
             Task<TestResult> taskArray = Task<TestResult>.Factory.StartNew(() =>
             {
                 ArrayComparer arrayComparer = new ArrayComparer(_testModelArray);
                 return arrayComparer.TestResult;
             });
 
-            Console.WriteLine("Start TestSingleExtraThreaded ListComparer");
+            Console.WriteLine("Start TestMultiThreaded ListComparer");
             Task<TestResult> taskList = Task<TestResult>.Factory.StartNew(() =>
             {
                 ListComparer listComparer = new ListComparer(_testModelList);
                 return listComparer.TestResult;
             });
 
-            Console.WriteLine("Start TestSingleExtraThreaded DictionaryComparer");
+            Console.WriteLine("Start TestMultiThreaded DictionaryComparer");
             Task<TestResult> taskDictionary = Task<TestResult>.Factory.StartNew(() =>
             {
                 DictionaryComparer dictionaryComparer = new DictionaryComparer(_testModelDictionary);
                 return dictionaryComparer.TestResult;
             });
 
-            Console.WriteLine("Start TestSingleExtraThreaded ObservableCollectionComparer");
+            Console.WriteLine("Start TestMultiThreaded ObservableCollectionComparer");
             Task<TestResult> taskObservableCollection = Task<TestResult>.Factory.StartNew(() =>
             {
                 ObservableCollectionComparer observableCollectionComparer = new ObservableCollectionComparer(_testModelObservableCollection);
@@ -137,12 +144,12 @@ namespace StringCompare.Models
             });
 
             Task.WaitAll(taskArray, taskList, taskDictionary, taskObservableCollection);
-            _allTestResults.Add("TestMultiThreaded_Array", taskArray.Result);
-            _allTestResults.Add("TestMultiThreaded_List", taskList.Result);
-            _allTestResults.Add("TestMultiThreaded_Dictionary", taskDictionary.Result);
-            _allTestResults.Add("TestMultiThreaded_ObservableCollection", taskObservableCollection.Result);
+            AllTestResults.Add("TestMultiThreaded_Array", taskArray.Result);
+            AllTestResults.Add("TestMultiThreaded_List", taskList.Result);
+            AllTestResults.Add("TestMultiThreaded_Dictionary", taskDictionary.Result);
+            AllTestResults.Add("TestMultiThreaded_ObservableCollection", taskObservableCollection.Result);
 
-            Console.WriteLine("End");
+            Console.WriteLine("End Test Run");
         }
 
         #endregion
@@ -156,9 +163,8 @@ namespace StringCompare.Models
             _testModelArray[objectNumber] = testModel;
             _testModelList.Add(testModel);
             _testModelDictionary.Add(objectNumber, testModel);
-        }
-
-        
+            _testModelObservableCollection.Add(testModel);
+        }        
 
         #endregion
     }

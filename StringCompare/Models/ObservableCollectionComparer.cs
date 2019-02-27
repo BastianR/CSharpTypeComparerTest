@@ -10,7 +10,6 @@ namespace StringCompare.Models
         #region Fields
 
         private ObservableCollection<TestModel> _testModels;
-        private TestResult _testResult;
 
         #endregion
 
@@ -21,30 +20,46 @@ namespace StringCompare.Models
         public ObservableCollectionComparer(ObservableCollection<TestModel> testModels)
         {
             _testModels = testModels;
-            _testResult = new TestResult(TypeOfTest.ObserableCollection);
+            TestResult = new TestResult(TypeOfTest.ObserableCollection);
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            _testResult.Results.Add("Byte", CompareBytes());
-            _testResult.Results.Add("SByte", CompareSbytes());
-            _testResult.Results.Add("Short", CompareShorts());
-            _testResult.Results.Add("UShort", CompareUshorts());
-            _testResult.Results.Add("Int", CompareInts());
-            _testResult.Results.Add("UInt", CompareUints());
-            _testResult.Results.Add("Long", CompareLongs());
-            _testResult.Results.Add("ULong", CompareUlongs());
-            _testResult.Results.Add("Float", CompareFloats());
-            _testResult.Results.Add("Double", CompareDoubles());
-            _testResult.Results.Add("Decimal", CompareDecimals());
-            _testResult.Results.Add("Char", CompareChars());
-            _testResult.Results.Add("Bool", CompareBools());
-            _testResult.Results.Add("String", CompareStrings());
-            _testResult.Results.Add("DateTime", CompareDateTimes());
-            _testResult.Results.Add("Enum", CompareEnums());
+            TestResult.Results.Add("Byte", CompareBytes());
+            Console.Write(".");
+            TestResult.Results.Add("SByte", CompareSbytes());
+            Console.Write(".");
+            TestResult.Results.Add("Short", CompareShorts());
+            Console.Write(".");
+            TestResult.Results.Add("UShort", CompareUshorts());
+            Console.Write(".");
+            TestResult.Results.Add("Int", CompareInts());
+            Console.Write(".");
+            TestResult.Results.Add("UInt", CompareUints());
+            Console.Write(".");
+            TestResult.Results.Add("Long", CompareLongs());
+            Console.Write(".");
+            TestResult.Results.Add("ULong", CompareUlongs());
+            Console.Write(".");
+            TestResult.Results.Add("Float", CompareFloats());
+            Console.Write(".");
+            TestResult.Results.Add("Double", CompareDoubles());
+            Console.Write(".");
+            TestResult.Results.Add("Decimal", CompareDecimals());
+            Console.Write(".");
+            TestResult.Results.Add("Char", CompareChars());
+            Console.Write(".");
+            TestResult.Results.Add("Bool", CompareBools());
+            Console.Write(".");
+            TestResult.Results.Add("String", CompareStrings());
+            Console.Write(".");
+            TestResult.Results.Add("DateTime", CompareDateTimes());
+            Console.Write(".");
+            TestResult.Results.Add("Enum", CompareEnums());
+            Console.WriteLine(".");
 
             stopwatch.Stop();
-            _testResult.Results.Add("AllTimeElapsed_ObservableCollection", stopwatch.ElapsedMilliseconds);
+            TestResult.Results.Add("AllTimeElapsed", stopwatch.ElapsedMilliseconds);
         }
 
         #endregion
@@ -53,10 +68,7 @@ namespace StringCompare.Models
 
         #region Properties
 
-        public TestResult TestResult
-        {
-            get => _testResult;
-        }
+        public TestResult TestResult { get; }
 
         #endregion
 

@@ -132,7 +132,7 @@ namespace StringCompare.Services
         private static string GenerateString()
         {
             string concatedString = "";
-            for (int i = 0; i < _random.Next(2, 10); i++)
+            for (int i = 0; i < _random.Next(7, 15); i++)
             {
                 concatedString += GenerateChar();
             }

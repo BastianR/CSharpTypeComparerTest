@@ -8,7 +8,6 @@ namespace StringCompare.Models
         #region Fields
 
         private TypeOfTest _typeOfTest;
-        private Dictionary<string, long> _results;
 
         #endregion
 
@@ -19,7 +18,7 @@ namespace StringCompare.Models
         public TestResult(TypeOfTest typeOfTest)
         {
             _typeOfTest = typeOfTest;
-            _results = new Dictionary<string, long>();
+            Results = new Dictionary<string, long>();
         }
 
         #endregion
@@ -28,10 +27,7 @@ namespace StringCompare.Models
 
         #region Properties
 
-        public Dictionary<string, long> Results
-        {
-            get => _results;
-        }
+        public Dictionary<string, long> Results { get; }
 
         #endregion
     }

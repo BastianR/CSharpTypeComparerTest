@@ -26,24 +26,40 @@ namespace StringCompare.Services
             stopwatch.Start();
 
             TestResult.Results.Add("Byte", CompareBytes());
+            Console.Write(".");
             TestResult.Results.Add("SByte", CompareSbytes());
+            Console.Write(".");
             TestResult.Results.Add("Short", CompareShorts());
+            Console.Write(".");
             TestResult.Results.Add("UShort", CompareUshorts());
+            Console.Write(".");
             TestResult.Results.Add("Int", CompareInts());
+            Console.Write(".");
             TestResult.Results.Add("UInt", CompareUints());
+            Console.Write(".");
             TestResult.Results.Add("Long", CompareLongs());
+            Console.Write(".");
             TestResult.Results.Add("ULong", CompareUlongs());
+            Console.Write(".");
             TestResult.Results.Add("Float", CompareFloats());
+            Console.Write(".");
             TestResult.Results.Add("Double", CompareDoubles());
+            Console.Write(".");
             TestResult.Results.Add("Decimal", CompareDecimals());
+            Console.Write(".");
             TestResult.Results.Add("Char", CompareChars());
+            Console.Write(".");
             TestResult.Results.Add("Bool", CompareBools());
+            Console.Write(".");
             TestResult.Results.Add("String", CompareStrings());
+            Console.Write(".");
             TestResult.Results.Add("DateTime", CompareDateTimes());
+            Console.Write(".");
             TestResult.Results.Add("Enum", CompareEnums());
+            Console.WriteLine(".");
 
             stopwatch.Stop();
-            TestResult.Results.Add("AllTimeElapsed_Array", stopwatch.ElapsedMilliseconds);
+            TestResult.Results.Add("AllTimeElapsed", stopwatch.ElapsedMilliseconds);
         }
 
         #endregion
