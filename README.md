@@ -9,7 +9,11 @@ How fast can different data types in different list types be compared?
   - In Mainthread
   - In Single Threaded Tasks
   - In Multithreaded Tasklist
-- Write all results in a csv file (location: D:\)
+- Write all results in a csv file (location: C:\Users\Default\Documents\TestResult.csv)
 
 ## Why?
 It shows which data type can perform with best results in comparing operations.
+
+## How?
+Just download the repository and build the project.
+You have to run it as administrator because of access rights to the output folder.
